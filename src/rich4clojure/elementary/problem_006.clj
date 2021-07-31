@@ -15,11 +15,14 @@
 (def __ :tests-will-fail)
 
 (comment
-  
+  ;; This is interesting
+
+  ;; by the way this comment block can be used to practice. 
+  ;; It will not be evaluated when loading the buffer, I think :)
   )
 
 (tests
-  [__] := (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))
+  [:a :b :c] := (list :a :b :c) (vec '(:a :b :c)) (vector :a :b :c))
 
 ;; Share your solution, and/or check how others did it:
 ;; https://gist.github.com/82981313411b066055f5a1d1a1e10037

@@ -14,15 +14,30 @@
 ;; the forms. Using ->> can sometimes make your code more
 ;; readable.
 
-(def __ :tests-will-fail)
+(def __ )
 
 (comment
-  
+  (map inc (take 3 (drop 2 [2 5 4 1 3 6])))
+  ;; => (5 2 4)
+
+  (reduce + (map inc (take 3 (drop 2 [2 5 4 1 3 6]))))
+  ;; => 11 
+  ;; this works but I don't think it is the correct answer
+
+  (->> [2 5 4 1 3 6] (drop 2) (take 3) (map inc))
+  ;; => (5 2 4)
+
+  (->> [2 5 4 1 3 6] (drop 2) (take 3) (map inc) (reduce +))
+  ;; => 11
+  ;; again this works, but not sure if it it the expected wayto do this
+
+  ;; I took a peek at some solutions and turns out this is the wqay that others are doing this.
+
   )
 
 (tests
-  (__ (map inc (take 3 (drop 2 [2 5 4 1 3 6])))) :=
-   (->> [2 5 4 1 3 6] (drop 2) (take 3) (map inc) (__))
+  (reduce + (map inc (take 3 (drop 2 [2 5 4 1 3 6])))) :=
+   (->> [2 5 4 1 3 6] (drop 2) (take 3) (map inc) (reduce +))
    11)
 
 ;; Share your solution, and/or check how others did it:

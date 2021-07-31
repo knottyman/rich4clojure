@@ -14,11 +14,38 @@
 ;; the forms. Using -> can sometimes make your code more
 ;; readable.
 
-(def __ :tests-will-fail)
+(def __ last)
 
 (comment
-  
+  (sort (rest (reverse [2 5 4 1 3 6])))
+  ;; => (1 2 3 4 5)
+
+  (last (sort (rest (reverse [2 5 4 1 3 6]))))
+  ;; => 5
+
+  (-> [2 5 4 1 3 6] (reverse) (rest) (sort))
+  ;; => (1 2 3 4 5)
+
+  (-> [2 5 4 1 3 6] (reverse) (rest) (sort) (last))
+  ;; => 5
+
+  (-> [2 5 4 1 3 6] )
+  ;; => [2 5 4 1 3 6]
+
+  (-> [2 5 4 1 3 6] (reverse))
+  ;; => (6 3 1 4 5 2)
+
+      (-> [2 5 4 1 3 6] (reverse) (rest))
+      ;; => (3 1 4 5 2)
+
+      (-> [2 5 4 1 3 6] (reverse) (rest) (sort))
+      ;; => (1 2 3 4 5)
+
+      (-> [2 5 4 1 3 6] (reverse) (rest) (sort) (last))
+      ;; => 5
+
   )
+
 
 (tests
   (__ (sort (rest (reverse [2 5 4 1 3 6])))) :=
